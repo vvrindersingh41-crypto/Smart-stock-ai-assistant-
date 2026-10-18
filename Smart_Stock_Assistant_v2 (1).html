@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pa">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#17324d">
+<title>Smart Stock Assistant — Punjabi</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Noto Sans Gurmukhi",Segoe UI,sans-serif;color:#172536;background:#f3f6fa;line-height:1.45}
+*{box-sizing:border-box}body{margin:0;padding:16px}.wrap{max-width:860px;margin:auto}
+header,.panel{background:#fff;border:1px solid #dfe6ef;border-radius:18px;padding:20px;margin:0 0 14px;box-shadow:0 5px 18px #17253608}
+header{background:linear-gradient(135deg,#17324d,#285a70);color:#fff;border:0}
+h1{font-size:25px;margin:0 0 6px}h2{font-size:19px;margin:0 0 14px}h3{font-size:16px;margin:18px 0 8px}
+p{margin:8px 0}.muted{color:#68788b;font-size:13px}.hero-muted{color:#e0ebf4;font-size:14px}
+label{display:block;font-size:14px;font-weight:650;margin:8px 0 5px}
+input,select{width:100%;font:inherit;padding:11px;border:1px solid #c8d3df;border-radius:10px;background:#fff;color:#172536}
+input:focus,select:focus{outline:2px solid #8bb8d4;border-color:#38799b}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+button{font:inherit;font-weight:700;border:0;border-radius:11px;padding:12px 15px;cursor:pointer}
+.primary{background:#17324d;color:#fff}.secondary{background:#eaf0f6;color:#17324d}.danger{background:#fff0f0;color:#9c2f36}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.actions button{flex:1}
+.notice{background:#f3f8fc;border-left:4px solid #477c9d;border-radius:8px;padding:12px;font-size:14px}
+.error{color:#a32c32;font-weight:650}.hidden{display:none!important}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.metric{background:#f1f5f9;border-radius:12px;padding:13px;min-width:0}.metric small{display:block;color:#617286}.metric strong{display:block;font-size:21px;margin-top:4px;overflow-wrap:anywhere}
+.product-list{display:grid;gap:10px}.product-row{border:1px solid #dfe6ef;border-radius:12px;padding:12px;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+.product-row strong{display:block}.product-row small{color:#68788b}.product-row button{padding:8px 10px}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:10px 7px;border-bottom:1px solid #e3e9f0;vertical-align:top}th{color:#52657a;font-weight:700}
+.footer{font-size:12px;color:#718095;margin:12px 2px 24px}
+@media(max-width:520px){body{padding:9px}.panel,header{padding:15px;border-radius:14px}.grid{grid-template-columns:1fr}.metrics{grid-template-columns:1fr 1fr}.metric strong{font-size:18px}.product-row{grid-template-columns:1fr auto}table{font-size:12px}th,td{padding:8px 4px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header>
+  <h1>Smart Stock Assistant</h1>
+  <p class="hero-muted">ਛੋਟੀ ਕੱਪੜਿਆਂ ਦੀ ਦੁਕਾਨ ਲਈ ਸਟਾਕ, ਖਰਚੇ ਅਤੇ ਮੁਨਾਫ਼ੇ ਦਾ ਸੌਖਾ ਹਿਸਾਬ</p>
+  <p class="hero-muted">ਇਹ ਵਰਜਨ ਤੁਹਾਡੇ ਡਿਵਾਈਸ ਦੇ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਚੱਲਦਾ ਹੈ। ਹਿਸਾਬ ਕਰਨ ਲਈ ਇੰਟਰਨੈੱਟ ਦੀ ਲੋੜ ਨਹੀਂ।</p>
+</header>
+
+<section class="panel">
+  <h2>1. ਨਵਾਂ ਡਿਜ਼ਾਈਨ ਜੋੜੋ</h2>
+  <div class="grid">
+    <div><label for="name">ਡਿਜ਼ਾਈਨ / ਕੱਪੜੇ ਦਾ ਨਾਮ</label><input id="name" placeholder="ਜਿਵੇਂ ਫੁੱਲਕਾਰੀ ਸੂਟ"></div>
+    <div><label for="category">ਕਿਸਮ</label><select id="category"><option>ਸੂਟ</option><option>ਕੁੜਤੀ</option><option>ਦੁਪੱਟਾ</option><option>ਪਲਾਜ਼ੋ</option><option>ਹੋਰ</option></select></div>
+    <div><label for="cost">ਇੱਕ ਪੀਸ ਦੀ ਖਰੀਦ ਕੀਮਤ (₹)</label><input id="cost" type="number" min="0" step="0.01" placeholder="500"></div>
+    <div><label for="price">ਇੱਕ ਪੀਸ ਦੀ ਵਿਕਰੀ ਕੀਮਤ (₹)</label><input id="price" type="number" min="0" step="0.01" placeholder="800"></div>
+    <div><label for="bought">ਕੁੱਲ ਖਰੀਦੇ ਪੀਸ</label><input id="bought" type="number" min="1" step="1" placeholder="20"></div>
+    <div><label for="sold">ਹੁਣ ਤੱਕ ਵਿਕੇ ਪੀਸ</label><input id="sold" type="number" min="0" step="1" placeholder="12"></div>
+    <div><label for="extra">ਇਸ ਡਿਜ਼ਾਈਨ ਦੇ ਕੁੱਲ ਵਾਧੂ ਖਰਚੇ (₹)</label><input id="extra" type="number" min="0" step="0.01" value="0"></div>
+    <div><label for="days">ਸਟਾਕ ਨੂੰ ਆਏ ਕਿੰਨੇ ਦਿਨ ਹੋਏ?</label><input id="days" type="number" min="1" step="1" placeholder="30"></div>
+  </div>
+  <p class="muted">ਵਾਧੂ ਖਰਚਿਆਂ ਵਿੱਚ ਟਰਾਂਸਪੋਰਟ, ਪੈਕਿੰਗ ਜਾਂ ਹੋਰ ਖਰਚੇ ਲਿਖ ਸਕਦੇ ਹੋ। ਕਿਰਾਇਆ/ਤਨਖ਼ਾਹ ਵਰਗੇ ਸਾਂਝੇ ਖਰਚੇ ਵੱਖਰੇ ਤੌਰ 'ਤੇ ਗਿਣਣੇ ਪੈਣਗੇ।</p>
+  <div class="actions"><button class="primary" id="add">ਡਿਜ਼ਾਈਨ ਸੇਵ ਕਰੋ</button><button class="secondary" id="demo">ਨਮੂਨੇ ਵਾਲਾ ਡਾਟਾ ਭਰੋ</button></div>
+  <p id="formError" class="error hidden" role="alert"></p>
+</section>
+
+<section class="panel">
+  <h2>2. ਤੁਹਾਡੀ ਸਟਾਕ ਲਿਸਟ</h2>
+  <div id="empty" class="notice">ਹਾਲੇ ਕੋਈ ਡਿਜ਼ਾਈਨ ਸੇਵ ਨਹੀਂ ਹੋਇਆ। ਉੱਪਰ ਜਾਣਕਾਰੀ ਭਰ ਕੇ “ਡਿਜ਼ਾਈਨ ਸੇਵ ਕਰੋ” ਦਬਾਓ।</div>
+  <div id="products" class="product-list"></div>
+  <div class="actions"><button class="secondary" id="export">CSV ਰਿਪੋਰਟ ਡਾਊਨਲੋਡ ਕਰੋ</button><button class="danger" id="clear">ਸਾਰਾ ਡਾਟਾ ਮਿਟਾਓ</button></div>
+  <p class="muted">ਡਾਟਾ ਇਸ ਬ੍ਰਾਊਜ਼ਰ ਵਿੱਚ ਸਥਾਨਕ ਤੌਰ 'ਤੇ ਸੇਵ ਹੁੰਦਾ ਹੈ। ਬ੍ਰਾਊਜ਼ਰ ਡਾਟਾ ਮਿਟਾਉਣ ਨਾਲ ਇਹ ਗੁੰਮ ਹੋ ਸਕਦਾ ਹੈ, ਇਸ ਲਈ CSV ਰਿਪੋਰਟ ਸੰਭਾਲ ਕੇ ਰੱਖੋ।</p>
+</section>
+
+<section class="panel">
+  <h2>3. ਕੁੱਲ ਰਿਪੋਰਟ</h2>
+  <div class="metrics">
+    <div class="metric"><small>ਕੁੱਲ ਬਚੇ ਪੀਸ</small><strong id="totalStock">0</strong></div>
+    <div class="metric"><small>ਬਚੇ ਸਟਾਕ ਦੀ ਖਰੀਦ ਕੀਮਤ</small><strong id="stockValue">₹0</strong></div>
+    <div class="metric"><small>ਵਿਕੇ ਪੀਸਾਂ ਦਾ ਅੰਦਾਜ਼ਨ ਮੁਨਾਫ਼ਾ*</small><strong id="totalProfit">₹0</strong></div>
+    <div class="metric"><small>ਘੱਟ ਵਿਕਰੀ ਵਾਲੇ ਡਿਜ਼ਾਈਨ</small><strong id="slowCount">0</strong></div>
+  </div>
+  <h3>ਹਰੇਕ ਡਿਜ਼ਾਈਨ ਲਈ ਸੁਝਾਅ</h3>
+  <div id="adviceList" class="product-list"><p class="muted">ਰਿਪੋਰਟ ਵੇਖਣ ਲਈ ਪਹਿਲਾਂ ਡਿਜ਼ਾਈਨ ਜੋੜੋ।</p></div>
+  <p class="muted">*ਅੰਦਾਜ਼ਨ ਮੁਨਾਫ਼ਾ = ਵਿਕੇ ਪੀਸਾਂ ਦੀ ਵਿਕਰੀ − ਉਹਨਾਂ ਪੀਸਾਂ ਦੀ ਖਰੀਦ ਲਾਗਤ − ਦਰਜ ਕੀਤੇ ਵਾਧੂ ਖਰਚੇ। ਜੇ ਵਾਧੂ ਖਰਚੇ ਪੂਰੇ ਕਾਰੋਬਾਰ ਲਈ ਹਨ, ਤਾਂ ਉਹਨਾਂ ਨੂੰ ਹਰੇਕ ਡਿਜ਼ਾਈਨ ਵਿੱਚ ਵੰਡਣਾ ਪਵੇਗਾ। ਇਹ ਟੂਲ ਮੰਗ ਦੀ ਗਾਰੰਟੀ ਨਹੀਂ ਦਿੰਦਾ।</p>
+</section>
+
+<div class="footer">Smart Stock Assistant • Prototype v2 • ਇਹ ਕਾਰੋਬਾਰੀ ਫ਼ੈਸਲਿਆਂ ਲਈ ਸਹਾਇਕ ਹਿਸਾਬ ਹੈ, ਪੇਸ਼ੇਵਰ ਅਕਾਊਂਟਿੰਗ ਜਾਂ ਵਿਕਰੀ ਦੀ ਗਾਰੰਟੀ ਨਹੀਂ।</div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const STORE = 'smartStockAssistant_v2';
+let items = [];
+try { const saved = localStorage.getItem(STORE); if(saved) items = JSON.parse(saved); if(!Array.isArray(items)) items=[]; } catch(e) { items=[]; }
+const money = n => '₹' + Math.round(n).toLocaleString('en-IN');
+const num = id => Number($(id).value);
+function save(){ try { localStorage.setItem(STORE, JSON.stringify(items)); } catch(e) {} }
+function suggestion(x){
+  const share=x.sold/x.bought, stock=x.bought-x.sold;
+  if(x.sold===0) return 'ਹਾਲੇ ਕੋਈ ਪੀਸ ਨਹੀਂ ਵਿਕਿਆ। ਹੋਰ ਨਾ ਮੰਗਵਾਓ; ਪਹਿਲਾਂ ਕੀਮਤ, ਡਿਜ਼ਾਈਨ ਅਤੇ ਗਾਹਕਾਂ ਦੀ ਮੰਗ ਜਾਂਚੋ।';
+  if(share>=.7 && stock<=Math.max(3,Math.ceil((x.sold/x.days)*7))) return 'ਵਿਕਰੀ ਚੰਗੀ ਅਤੇ ਸਟਾਕ ਘੱਟ ਹੈ। ਦੁਬਾਰਾ ਥੋੜ੍ਹਾ ਮਾਲ ਮੰਗਵਾਉਣ ਬਾਰੇ ਸੋਚੋ; ਪਹਿਲਾਂ ਮੌਜੂਦਾ ਮੰਗ ਦੀ ਪੁਸ਼ਟੀ ਕਰੋ।';
+  if(share<=.3 && x.days>=30) return 'ਵਿਕਰੀ ਹੌਲੀ ਹੈ। ਫਿਲਹਾਲ ਹੋਰ ਨਾ ਮੰਗਵਾਓ। ਕੀਮਤ, ਡਿਜ਼ਾਈਨ ਅਤੇ ਗਾਹਕਾਂ ਦੀ ਪਸੰਦ ਜਾਂਚੋ।';
+  return 'ਹਾਲੇ ਹੋਰ ਡਾਟਾ ਚਾਹੀਦਾ ਹੈ। ਵਿਕਰੀ ਦੇਖਦੇ ਰਹੋ ਅਤੇ ਗਾਹਕਾਂ ਤੋਂ ਰੰਗ/ਸਾਈਜ਼ ਦੀ ਮੰਗ ਜਾਣੋ।';
+}
+function productMath(x){
+  const stock=x.bought-x.sold;
+  const allocatedExtra=x.extra*(x.sold/x.bought);
+  const profit=(x.price-x.cost)*x.sold-allocatedExtra;
+  return {...x,stock,stockValue:stock*x.cost,profit,share:x.sold/x.bought,margin:x.price ? (profit/(x.price*x.sold||1))*100 : 0};
+}
+function render(){
+  $('empty').classList.toggle('hidden',items.length>0);
+  $('products').innerHTML='';
+  items.forEach((raw,i)=>{
+    const x=productMath(raw);
+    const div=document.createElement('div'); div.className='product-row';
+    const info=document.createElement('div');
+    const strong=document.createElement('strong'); strong.textContent=x.name+' · '+x.category;
+    const small=document.createElement('small'); small.textContent=`ਬਚੇ ${x.stock} ਪੀਸ · ਸਟਾਕ ਮੁੱਲ ${money(x.stockValue)} · ਅੰਦਾਜ਼ਨ ਮੁਨਾਫ਼ਾ ${money(x.profit)}`;
+    info.append(strong,small);
+    const btn=document.createElement('button'); btn.className='danger'; btn.textContent='ਮਿਟਾਓ'; btn.setAttribute('aria-label',x.name+' ਮਿਟਾਓ'); btn.addEventListener('click',()=>{items.splice(i,1);save();render();});
+    div.append(info,btn); $('products').append(div);
+  });
+  const computed=items.map(productMath);
+  $('totalStock').textContent=computed.reduce((a,x)=>a+x.stock,0);
+  $('stockValue').textContent=money(computed.reduce((a,x)=>a+x.stockValue,0));
+  $('totalProfit').textContent=money(computed.reduce((a,x)=>a+x.profit,0));
+  $('slowCount').textContent=computed.filter(x=>x.share<=.3 && x.days>=30).length;
+  $('adviceList').innerHTML='';
+  if(!computed.length){$('adviceList').innerHTML='<p class="muted">ਰਿਪੋਰਟ ਵੇਖਣ ਲਈ ਪਹਿਲਾਂ ਡਿਜ਼ਾਈਨ ਜੋੜੋ।</p>';return;}
+  computed.forEach(x=>{
+    const box=document.createElement('div');box.className='notice';
+    const title=document.createElement('strong');title.textContent=x.name+': ';
+    const text=document.createElement('span');text.textContent=suggestion(x);
+    box.append(title,text);$('adviceList').append(box);
+  });
+}
+function readForm(){
+  const x={name:$('name').value.trim(),category:$('category').value,cost:num('cost'),price:num('price'),bought:num('bought'),sold:num('sold'),extra:num('extra'),days:num('days')};
+  let err='';
+  if(!x.name)err='ਕੱਪੜੇ ਜਾਂ ਡਿਜ਼ਾਈਨ ਦਾ ਨਾਮ ਲਿਖੋ।';
+  else if(['cost','price','bought','sold','extra','days'].some(id=>$(id).value===''))err='ਸਾਰੇ ਖਾਨੇ ਭਰੋ। ਜੇ ਵਾਧੂ ਖਰਚਾ ਨਹੀਂ ਤਾਂ 0 ਲਿਖੋ।';
+  else if(![x.cost,x.price,x.bought,x.sold,x.extra,x.days].every(Number.isFinite))err='ਕਿਰਪਾ ਕਰਕੇ ਸਹੀ ਅੰਕ ਲਿਖੋ।';
+  else if(x.cost<=0||x.price<=0||x.bought<1||x.sold<0||x.sold>x.bought||x.extra<0||x.days<1||!Number.isInteger(x.bought)||!Number.isInteger(x.sold)||!Number.isInteger(x.days))err='ਕੀਮਤ, ਦਿਨ ਅਤੇ ਪੀਸਾਂ ਦੀ ਗਿਣਤੀ ਜਾਂਚੋ। ਵਿਕੇ ਪੀਸ ਖਰੀਦੇ ਪੀਸਾਂ ਤੋਂ ਵੱਧ ਨਹੀਂ ਹੋ ਸਕਦੇ।';
+  return {x,err};
+}
+$('add').addEventListener('click',()=>{
+  const {x,err}=readForm();$('formError').textContent=err;$('formError').classList.toggle('hidden',!err);if(err)return;
+  const same=items.findIndex(y=>y.name.toLowerCase()===x.name.toLowerCase());
+  if(same>=0){$('formError').textContent='ਇਸ ਨਾਮ ਦਾ ਡਿਜ਼ਾਈਨ ਪਹਿਲਾਂ ਮੌਜੂਦ ਹੈ। ਵੱਖਰਾ ਨਾਮ ਵਰਤੋ ਜਾਂ ਪਹਿਲਾਂ ਵਾਲੀ ਐਂਟਰੀ ਮਿਟਾਓ।';$('formError').classList.remove('hidden');return;}
+  items.push(x);save();render();$('formError').classList.add('hidden');
+  ['name','cost','price','bought','sold','days'].forEach(id=>$(id).value='');$('extra').value='0';$('name').focus();
+});
+$('demo').addEventListener('click',()=>{ $('name').value='ਫੁੱਲਕਾਰੀ ਸੂਟ';$('category').value='ਸੂਟ';$('cost').value=500;$('price').value=800;$('bought').value=20;$('sold').value=12;$('extra').value=300;$('days').value=30; });
+$('clear').addEventListener('click',()=>{if(confirm('ਕੀ ਤੁਸੀਂ ਸਾਰੇ ਸੇਵ ਕੀਤੇ ਡਿਜ਼ਾਈਨ ਮਿਟਾਉਣਾ ਚਾਹੁੰਦੇ ਹੋ?')){items=[];save();render();}});
+$('export').addEventListener('click',()=>{
+ if(!items.length){alert('ਪਹਿਲਾਂ ਘੱਟੋ-ਘੱਟ ਇੱਕ ਡਿਜ਼ਾਈਨ ਸੇਵ ਕਰੋ।');return;}
+ const rows=[['ਡਿਜ਼ਾਈਨ','ਕਿਸਮ','ਖਰੀਦ ਕੀਮਤ','ਵਿਕਰੀ ਕੀਮਤ','ਖਰੀਦੇ ਪੀਸ','ਵਿਕੇ ਪੀਸ','ਬਚੇ ਪੀਸ','ਵਾਧੂ ਖਰਚੇ','ਦਿਨ','ਬਚੇ ਸਟਾਕ ਦੀ ਖਰੀਦ ਕੀਮਤ','ਅੰਦਾਜ਼ਨ ਮੁਨਾਫ਼ਾ']];
+ items.map(productMath).forEach(x=>rows.push([x.name,x.category,x.cost,x.price,x.bought,x.sold,x.stock,x.extra,x.days,x.stockValue,x.profit]));
+ const csv='\ufeff'+rows.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');
+ const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='smart-stock-report.csv';a.click();URL.revokeObjectURL(url);
+});
+render();
+</script>
+</body></html>
